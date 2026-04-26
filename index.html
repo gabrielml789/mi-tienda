@@ -1678,29 +1678,38 @@ guardar();
 }
 
 /* PERSONALIZAR */
+/* PERSONALIZAR SOLO PARA LA WEB PUBLICADA */
 function personalizar(){
-let c=colorBg.value;
-let img=imgBg.value;
-document.body.style.background=c;
-if(img){
-document.body.style.backgroundImage=`url(${img})`;
-document.body.style.backgroundSize="cover";
-}
-localStorage.setItem("colorBg",c);
-localStorage.setItem("imgBg",img);
+  let c = colorBg.value;
+  let img = imgBg.value;
+
+  document.body.style.background = c;
+
+  if(img){
+    document.body.style.backgroundImage = `url('${img}')`;
+    document.body.style.backgroundSize = "cover";
+    document.body.style.backgroundPosition = "center";
+    document.body.style.backgroundRepeat = "no-repeat";
+  }
+
+  /* Esto solo cambia tu navegador, no el de los demás */
+  localStorage.setItem("colorBg", c);
+  localStorage.setItem("imgBg", img);
 }
 
-/* CARGAR PERSONALIZACIÓN */
-let colorGuardado=localStorage.getItem("colorBg");
-let imgGuardado=localStorage.getItem("imgBg");
+/* CARGAR PERSONALIZACIÓN EN TU NAVEGADOR */
+let colorGuardado = localStorage.getItem("colorBg");
+let imgGuardado = localStorage.getItem("imgBg");
 
 if(colorGuardado){
-document.body.style.background=colorGuardado;
+  document.body.style.background = colorGuardado;
 }
 
 if(imgGuardado){
-document.body.style.backgroundImage=`url(${imgGuardado})`;
-document.body.style.backgroundSize="cover";
+document.body.style.backgroundImage = "url('https://tu-url-de-imagen.com/fondo.jpg')";
+document.body.style.backgroundSize = "cover";
+document.body.style.backgroundPosition = "center";
+document.body.style.backgroundRepeat = "no-repeat";
 }
 
 /* COMPRA */
@@ -1720,7 +1729,7 @@ mensaje+=`- ${p.nombre} ($${p.precio})%0A`;
 });
 mensaje+=`%0ATotal: $${document.getElementById("total").innerText}`;
 
-let telefono="593963029325";
+let telefono="593992773256";
 
 window.open(`https://wa.me/${telefono}?text=${mensaje}`);
 
@@ -2180,6 +2189,7 @@ ${emoji}
 `;
 }
 }
+
 function eliminarIconoWelcome(){
 localStorage.removeItem("welcomeIconImg");
 localStorage.removeItem("welcomeIconEmoji");
@@ -2203,6 +2213,11 @@ let filtrados = productos.filter(p =>
 p.nombre.toLowerCase().includes(texto) ||
 p.categoria.toLowerCase().includes(texto)
 );
+
+document.body.style.backgroundImage = "url('https://images.unsplash.com/photo-1504674900247-0877df9cc836')";
+document.body.style.backgroundSize = "cover";
+document.body.style.backgroundPosition = "center";
+document.body.style.backgroundRepeat = "no-repeat";
 
 </script>
 
