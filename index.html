@@ -1385,6 +1385,7 @@ filter:drop-shadow(0 0 10px #25D366);
   }
 
   function confirmarCompra() {
+    document.getElementById("cart").classList.remove("active");
     if (!carrito.length) {
       alert("Carrito vacío");
       return;
