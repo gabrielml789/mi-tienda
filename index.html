@@ -795,6 +795,45 @@ filter:drop-shadow(0 0 10px #25D366);
   box-shadow:0 0 15px rgba(0,0,0,0.3);
   animation:latido 2s infinite;
 }
+  .logo-left,
+.logo-right{
+  position:absolute;
+  top:10px;
+  width:90px;
+  height:auto;
+  z-index:99999;
+  animation:latido 2s infinite;
+}
+
+.logo-left{
+  left:15px;
+}
+
+.logo-right{
+  right:80px;
+}
+  @media (max-width: 700px){
+  .logo-header{
+    width:65px;
+    top:8px;
+    right:65px;
+  }
+}
+  .logo-header{
+  position:absolute;
+  top:10px;
+  right:140px;
+  width:90px;
+  height:auto;
+  z-index:99999;
+}
+  @media (max-width: 700px){
+  .logo-header{
+    width:65px;
+    top:8px;
+    right:65px;
+  }
+}
 </style>
 </head>
 
@@ -840,8 +879,8 @@ filter:drop-shadow(0 0 10px #25D366);
 
 <header class="header">
   <img src="logolll.png.png" class="header-extra-img" alt="Imagen decorativa">
-  <img src="logolll.png" class="header-extra-img" alt="Imagen decorativa">
-  <img src="logo.png.png" class="logo-header" alt="Logo principal">
+  <img src="logo.png.png" class="logo-left" alt="Logo izquierdo">
+<img src="logolll.png.png" class="logo-right" alt="Logo derecho">
   <div class="header-left">
     <div class="logo-box">
       <span class="logo-icon">🛒</span>
