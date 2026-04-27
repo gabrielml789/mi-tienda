@@ -844,6 +844,33 @@ filter:drop-shadow(0 0 10px #25D366);
   height:auto;
   z-index:100;
 }
+
+@media (max-width: 768px){
+  .cart-sidebar,
+  .cart-panel,
+  .carrito-panel{
+    width: 85vw !important;
+    max-width: 350px;
+    height: 100vh;
+    right: 0;
+    top: 0;
+    overflow-y: auto;
+    z-index: 9999;
+  }
+
+  .cart-overlay,
+  .overlay-carrito{
+    background: rgba(0,0,0,0.45);
+    z-index: 9998;
+  }
+}
+
+  .cart-overlay,
+  .overlay-carrito{
+    background: rgba(0,0,0,0.45);
+    z-index: 9998;
+  }
+}
   
 </style>
 </head>
