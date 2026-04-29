@@ -888,6 +888,9 @@ filter:drop-shadow(0 0 10px #25D366);
     z-index: 9998 !important;
   }
 }
+.product{
+  scroll-margin-top: 120px;
+}
   
 </style>
 </head>
@@ -1299,15 +1302,35 @@ filter:drop-shadow(0 0 10px #25D366);
     });
   }
 
-  function filtrar(sectionId) {
-    currentSectionId = sectionId || '';
-    renderHomeProducts();
-  }
+function filtrar(sectionId) {
+  currentSectionId = sectionId || '';
+  renderHomeProducts();
 
-  function buscarProducto() {
-    currentSearch = document.getElementById("buscador").value || "";
-    renderHomeProducts();
-  }
+  // 👉 SCROLL AUTOMÁTICO AL PRIMER PRODUCTO
+  setTimeout(() => {
+    const primerProducto = document.querySelector(".product");
+    if (primerProducto) {
+      primerProducto.scrollIntoView({
+        behavior: "smooth",
+        block: "start"
+      });
+    }
+  }, 200);
+}
+function buscarProducto() {
+  currentSearch = document.getElementById("buscador").value || "";
+  renderHomeProducts();
+
+  setTimeout(() => {
+    const primerProducto = document.querySelector(".product");
+    if (primerProducto) {
+      primerProducto.scrollIntoView({
+        behavior: "smooth",
+        block: "start"
+      });
+    }
+  }, 200);
+}
 
   async function addToCart(id) {
     const producto = productos.find(p => p.id === id);
