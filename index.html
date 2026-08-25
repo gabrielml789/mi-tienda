@@ -1250,11 +1250,12 @@ let productosMostrados = 30;
     });
   }
 
-function renderHomeProducts() {
-  function cargarMasProductos() {
+function cargarMasProductos() {
   productosMostrados += 30;
   renderHomeProducts();
 }
+
+function renderHomeProducts() {
   const cont = document.getElementById("tienda");
 
   // Al entrar, no mostrar productos hasta elegir una categoría
