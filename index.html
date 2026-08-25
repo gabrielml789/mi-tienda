@@ -1093,7 +1093,8 @@ filter:drop-shadow(0 0 10px #25D366);
   let carrito = JSON.parse(localStorage.getItem('carrito') || '[]');
   let configData = { ...DEFAULT_STATE };
   let currentSearch = '';
-  let currentSectionId = null;
+let currentSectionId = null;
+let productosMostrados = 30;
 
   function escapeHtml(text = '') {
     return String(text)
@@ -1250,14 +1251,34 @@ filter:drop-shadow(0 0 10px #25D366);
   }
 
 function renderHomeProducts() {
-  // Al entrar, no mostrar ningún producto hasta elegir una categoría
+  function cargarMasProductos() {
+  productosMostrados += 30;
+  renderHomeProducts();
+}
+  const cont = document.getElementById("tienda");
+
+  // Al entrar, no mostrar productos hasta elegir una categoría
   if (currentSectionId === null) {
-    const cont = document.getElementById("tienda");
     cont.innerHTML = "";
     return;
   }
 
-  render(getVisibleProducts());
+  const productosVisibles = getVisibleProducts();
+  const productosAmostrar = productosVisibles.slice(0, productosMostrados);
+
+  render(productosAmostrar);
+
+  // Botón Cargar más
+  if (productosMostrados < productosVisibles.length) {
+    cont.innerHTML += `
+      <div style="width:100%; text-align:center; padding:20px;">
+        <button onclick="cargarMasProductos()" 
+          style="font-size:18px; padding:14px 30px;">
+          ⬇️ Cargar más productos
+        </button>
+      </div>
+    `;
+  }
 }
 
   function renderSecciones() {
@@ -1339,9 +1360,10 @@ function renderHomeProducts() {
 
 function filtrar(sectionId) {
   currentSectionId = sectionId || '';
+  productosMostrados = 30;
+
   renderHomeProducts();
 
-  // 👉 SCROLL AUTOMÁTICO AL PRIMER PRODUCTO
   setTimeout(() => {
     const primerProducto = document.querySelector(".product");
     if (primerProducto) {
@@ -1354,6 +1376,8 @@ function filtrar(sectionId) {
 }
 function buscarProducto() {
   currentSearch = document.getElementById("buscador").value || "";
+  productosMostrados = 30;
+
   renderHomeProducts();
 
   setTimeout(() => {
